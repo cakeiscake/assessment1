@@ -1,6 +1,6 @@
 from app.account import Account
 from app.view import View 
-from app.util import get_price 
+from app.util import get_price, gen_api_key
 import time 
 
 view = View()
@@ -18,23 +18,23 @@ def welcome_homepage():
             continue 
 
         if selection == "1":
-            username, balance, password, confirm_password = view.get_username(), view.add_balance(), view.get_password(), view.confirm_password() 
+            username, balance, api = view.get_username(), view.add_balance(), gen_api_key()
 
-            if password != confirm_password:
-                view.improper_password()
-                continue  
-            if not balance.isdigit() or int(balance) < 0:
-                view.improper_balance()
-                continue
+            # if password != confirm_password:
+            #     view.improper_password()
+            #     continue  
+            # if not balance.isdigit() or int(balance) < 0:
+            #     view.improper_balance()
+            #     continue
             
-            account = Account(username = username, balance = balance)
-            hashed_pw = Account.set_password(account, password)
-            account.save()
+            account = Account(username = username, balance = balance, api_key=api)
+            # hashed_pw = Account.set_password(account, password)
+            # account.save()
             logged_in_homepage(account)
             return 
         elif selection == "2":
-            username, password = view.get_username(), view.get_password()
-            logged_in_account = Account.login(username=username, password=password)
+            username, api_key = view.get_username(), view.get_api_key()
+            logged_in_account = Account.api_auth(username=username, apikey=api_key)
             
             if logged_in_account:
                 logged_in_homepage(logged_in_account)
@@ -50,7 +50,7 @@ def welcome_homepage():
 def logged_in_homepage(account):
     
     while True:
-        selection = view.logged_in_screen(account.username, account.balance)
+        selection = view.logged_in_screen(account.username, account.balance,account.api_key)
         
         if selection not in ["1", "2", "3", "4", "5", "6", "7", "8"]:
             view.improper_selection()

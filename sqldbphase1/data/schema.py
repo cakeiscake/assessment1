@@ -12,11 +12,9 @@ def schema(dbpath=DBPATH):
         cursor.execute(DROPSQL.format(tablename='campuses'))
 
         SQL = """CREATE TABLE campuses(
-                pk INTEGER PRIMARY KEY AUTOINCREMENT,
-                students_pk INT,
-                state VARCHAR (16) NOT NULL,
-                city VARCHAR (32),
-                FOREIGN KEY (students_pk) REFERENCES students(pk)
+            pk INTEGER PRIMARY KEY AUTOINCREMENT,
+            state VARCHAR (16) NOT NULL,
+            city VARCHAR (32)
             );"""
 
         cursor.execute(SQL)
@@ -25,11 +23,10 @@ def schema(dbpath=DBPATH):
 
         SQL = """CREATE TABLE students(
                 pk INTEGER PRIMARY KEY AUTOINCREMENT,
+                campus_pk INT,
                 first_name VARCHAR(32),
                 last_name VARCHAR(32),
-                GPA FLOAT
+                GPA FLOAT,
+                FOREIGN KEY(campus_pk) REFERENCES campuses(pk)
             );"""
         cursor.execute(SQL)
-
-if __name__ == "main":
-    schema()

@@ -34,13 +34,13 @@ def welcome_homepage():
             return 
         elif selection == "2":
             username, api_key = view.get_username(), view.get_api_key()
-            logged_in_account = Account.api_auth(username=username, apikey=api_key)
+            logged_in_account = Account.api_auth(username=username, api_key=api_key)
             
             if logged_in_account:
                 logged_in_homepage(logged_in_account)
                 return
             else:
-                view.improper_password()
+                view.wrong_key()
                 continue
         elif selection == "3":
             view.goodbye()

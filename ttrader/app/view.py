@@ -19,9 +19,11 @@ class View():
 
     def wrong_key(self):
         print()
-        print('improper key go fuck yourself')
+        print('improper key')
         print()
         return input()
+
+
     def get_username(self):
         print()
         print("Please enter a username:", end="")
@@ -66,10 +68,11 @@ class View():
         print("Thank you - Goodbye!")
         print()
 
-    def logged_in_screen(self, username, balance):
+    def logged_in_screen(self, username, balance, api_key):
         print()
         print(f"Hello {username}")
         print(f"Your current balance is {balance}")
+        print(f"Your API key is {api_key}")
         print()
         print("Please select from the following options:")
         print()

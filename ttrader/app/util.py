@@ -1,6 +1,7 @@
 import hashlib, uuid
 import requests
 
+from random import randint
 salt = "MYSALT"  # generates a random uuid
 encoded_salt = salt.encode() 
 
@@ -8,6 +9,10 @@ encoded_salt = salt.encode()
 FAKE_PRICES = {
         'stok': 3.50
     }
+
+def gen_api_key():
+    key = randint(1000000000000000,10000000000000000)
+    return key
 
 def hash_password(password):
     """ WEEK 4 TODO: encrypt with sha512 & a salt """

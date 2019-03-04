@@ -30,8 +30,10 @@ class Account(ORM):
     
     @classmethod
     def api_auth(cls, username, api_key):
-        return cls.select_one_where("WHERE username = ? AND api_key = ?",(username, api_key ))
-    
+        api_key = cls.select_one_where("WHERE username = ? AND api_key = ?",(username, api_key ))
+        if api_key is None:
+            return 
+        return api_key
 
                                 
 

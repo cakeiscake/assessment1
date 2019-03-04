@@ -40,6 +40,7 @@ class ORM:
             values.append(self.pk)
 
             curs.execute(SQL, values)
+            curs.comm
 
     def delete(self):
         if not self.pk:

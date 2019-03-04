@@ -26,7 +26,7 @@ def schema(dbpath=DBPATH):
             campus_pk INT,
             first_name VARCHAR(32),
             last_name VARCHAR(32),
-            GPA FLOAT,
-            FOREIGN KEY(campus_pk) REFERENCES campuses(pk)
+            gpa FLOAT,
+            FOREIGN KEY (campus_pk) REFERENCES campuses(pk)
             );"""
         cursor.execute(SQL)

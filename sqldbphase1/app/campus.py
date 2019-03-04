@@ -1,13 +1,14 @@
+import sqlite3
 from app.orm import ORM
 import os
-DIR = os.path.dirname(__file__)
-DBFILENAME = 'data/school.db'
-DBPATH = os.path.join(DIR, DBFILENAME)
+# DIR = os.path.dirname(__file__)
+# DBFILENAME = 'data/school.db'
+# DBPATH = os.path.join(DIR, DBFILENAME)
 
 class Campus(ORM):
     tablename = 'campuses'
-    fields = ['city', 'state']
-    def __init__(self, **kwargs):
+    fields = ['state', 'city']
+    def __init__(self, *args, **kwargs):
         self.pk = kwargs.get('pk')
-        self.first_name = kwargs.get('city')
-        self.last_name = kwargs.get('state')
+        self.state = kwargs.get('state')
+        self.city = kwargs.get('city')

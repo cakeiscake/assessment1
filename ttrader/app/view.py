@@ -12,7 +12,16 @@ class View():
         print("3. quit")
         print()
         return input()
+    def get_api_key(self):
+        print()
+        print('api key: ')
+        return input()
 
+    def wrong_key(self):
+        print()
+        print('improper key go fuck yourself')
+        print()
+        return input()
     def get_username(self):
         print()
         print("Please enter a username:", end="")

@@ -11,5 +11,5 @@ def seed(dbpath=DBPATH):
 
     new_york = Campus(state='ny', city='ny')
     new_york.save()
-    Locket = Student(campuspk = new_york.pk, first_name='test', last_name='testname', gpa=3.0)
-    Locket.save()
+    # Locket = Student(campuspk = new_york.pk, first_name='test', last_name='testname', gpa=3.0)
+    # Locket.save() not working

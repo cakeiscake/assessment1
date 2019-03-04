@@ -4,7 +4,7 @@ from app.util import hash_password
 from app.util import get_price
 from app.position import Position
 from app.trade import Trade
-from app.util import hash_password
+from app.util import hash_password, gen_api_key
 from app.view import View 
 
 class Account(ORM):
@@ -27,7 +27,13 @@ class Account(ORM):
         hashed_pw = hash_password(password)
         self.password_hash = hashed_pw 
         return hashed_pw
+    
+    @classmethod
+    def api_auth(cls, username, api_key):
+        return cls.select_one_where("WHERE username = ? AND api_key = ?",(username, api_key ))
+    
 
+                                
 
     def get_positions(self):
         positions = Position.select_many_where("WHERE accounts_pk = ?", (self.pk, ))

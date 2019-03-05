@@ -2,14 +2,17 @@ import os
 from app.orm import ORM
 from app.campus import Campus
 from app.student import Student
+from app.util import genID
 DIR = os.path.dirname(__file__)
 DBNAME = 'school.db'
 DBPATH = os.path.join(DIR, DBNAME)
 
 def seed(dbpath=DBPATH):
     ORM.dbpath = dbpath
-
-    new_york = Campus(state='ny', city='ny')
+    studentID = genID()
+    new_york = Campus(state='New York', city='New York')
+    houston = Campus(state='Texas', city='Houston')
+    # Locket = Student(campus_pk=new_york.pk, first_name='test', last_name='testname',studentID=studentID, gpa=3.0)
     new_york.save()
-    # Locket = Student(campuspk = new_york.pk, first_name='test', last_name='testname', gpa=3.0)
-    # Locket.save() not working
+    houston.save()
+    # Locket.save()

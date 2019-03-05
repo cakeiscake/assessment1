@@ -7,7 +7,7 @@ DBPATH = os.path.join(DIR, DBFILENAME)
 
 class Student(ORM):
     tablename = 'students'
-    fields = ['campus_pk', 'studentID', 'first_name', 'last_name', 'gpa']
+    fields = ['studentID', 'first_name', 'last_name', 'gpa']
 
     def __init__(self, **kwargs):
         self.pk = kwargs.get('pk')

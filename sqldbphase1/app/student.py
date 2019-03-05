@@ -13,7 +13,7 @@ class Student(ORM):
         self.pk = kwargs.get('pk')
         self.campus_pk = kwargs.get('campus_pk')
         self.first_name = kwargs.get('first_name')
-        self.last_name = kwargs.get('last name')
+        self.last_name = kwargs.get('last_name')
         self.studentID = kwargs.get('studentID')
         self.gpa = kwargs.get('gpa')
     

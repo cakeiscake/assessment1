@@ -12,7 +12,7 @@ def seed(dbpath=DBPATH):
     studentID = genID()
     new_york = Campus(state='New York', city='New York')
     houston = Campus(state='Texas', city='Houston')
-    # Locket = Student(campus_pk=new_york.pk, first_name='test', last_name='testname',studentID=studentID, gpa=3.0)
+    Locket = Student(first_name='test', last_name='testname',studentID=studentID, gpa=3.0)
     new_york.save()
     houston.save()
     # Locket.save()
